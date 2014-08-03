@@ -44,7 +44,7 @@ public ArraySort() throws FileNotFoundException, IOException{
         String cadena="";
         for (int i=0; i<sortArray.getSize(); i++){
         //Los numeros ordenados se concatenan y se guardan en la cadena
-            cadena+=Integer.toString(sortArray.getValor(i))+" ";
+            cadena+=Integer.toString(sortArray.getValor(i))+",";
             
         }
         
