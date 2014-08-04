@@ -34,10 +34,21 @@ public class Sorting
    
    
    //AGREGAR ACA EL CODIGO DE LOS OTROS METODOS DE SORTING.
-   
-   
-   
-   
-   
+   public static void insertionSort(int[] elementos, int index)
+   {
+       if(index < elementos.length)
+       {
+           int j = index;
+	   int B = elementos[index];
+	   while ((j > 0) && (elementos[j-1] > B))
+           {
+               elementos[j] = elementos[j-1];
+	       j--;
+           }
+           elementos[j] = B;
+	   insertionSort(elementos, index + 1);
+       }
+   }
+
 }
 
