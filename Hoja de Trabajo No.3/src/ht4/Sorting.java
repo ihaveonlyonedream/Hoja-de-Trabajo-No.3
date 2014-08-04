@@ -1,13 +1,21 @@
-/*
- * Universidad del valle de Guatemala
- * Algoritmos y estructuras de datos
- */
+//******************************************************************************************************************
+//Universidad del Valle de Guatemala
+//Autores:                  William Orosco      13386
+//                          Dulce Chacon        13463
+//                          Nancy Giron         13467
+//                          Luis Gomez          13135
+//Clase que contiene los distintos tipos de sorting. 
+//
+// BubbleSort, InsertionSort, QuickSort y MergeSort
+//
+//Todos los sort reciben como parametro un arreglo de strings y en el caso de bubbleSort e Insertion sort reciben
+//como otro parametro la longitud del arreglo.
+//******************************************************************************************************************
 package ht4;
 
 
-/*
- * implementacion del codigo de los diferentes metodos de SORTING
- */
+//******************************************************************************************************************
+
 public class Sorting
 {
     
@@ -17,7 +25,10 @@ public class Sorting
     /*BUBBLE SORT. William Orozco. 
      * Codigo tomado de: Java Structures/Data structures for the principled programmer   
      * Autor: Duanef Bailey*/
-       public static void bubbleSort (String[] elementos, int i)
+    //******************************************************************************************************************
+    //******************************************************************************************************************
+    
+       public static String bubbleSort (String[] elementos, int i)
    {
       /*Implementacion del algoritmo de ordenamiento bubble Sort*/
       int numSorted =0; //numero de valores en orden
@@ -43,11 +54,20 @@ public class Sorting
                 resultado = resultado + elementos[k];
         }
         System.out.println(resultado);
+        
+        return resultado;
     
    }
+       //******************************************************************************************************************
+       //******************************************************************************************************************
+       
+       
+       
+       /*insertionSort. Dulce Chacon. */
+        //******************************************************************************************************************
+       //******************************************************************************************************************
    
-   
-        public static void insertionSort(String[] elementos, int n)
+        public static String insertionSort(String[] elementos, int n)
    {
        int numerosOrdenados = 1;
        int index;
@@ -85,14 +105,20 @@ public class Sorting
                 resultado = resultado + elementos[k];
         }
         System.out.println(resultado);
-    
+        return resultado;
    }
-   
-   /*QuickSort Nancy Girón 
-    Codigo tomado de: Java Structures/Data structures for the principled programmer
-*/
-
-public static void quickSort(String elementos[]){
+        
+        
+        //******************************************************************************************************************
+        //******************************************************************************************************************
+         
+        
+        
+        /*QuickSort. Nancy Giron. */
+        //******************************************************************************************************************
+        //******************************************************************************************************************
+        
+public static String quickSort(String elementos[]){
     
         elementos = quickSortOrd(elementos,0,elementos.length - 1);
         for(int k=0; k < elementos.length;k++){
@@ -102,6 +128,7 @@ public static void quickSort(String elementos[]){
                 resultado = resultado + elementos[k];
         }
         System.out.println(resultado);
+        return resultado;
   
 }
 
@@ -152,9 +179,16 @@ public static void quickSort(String elementos[]){
         return elementos;
     }
     
+    //******************************************************************************************************************
+    //******************************************************************************************************************
     
+    
+    
+    /*MergeSort. Luis Gomez*/
+    //******************************************************************************************************************
+    //******************************************************************************************************************
        
-    public static void mergeSort(String [] elementos){
+    public static String mergeSort(String [] elementos){
     
         elementos = MergeSortOrd(elementos);
         for(int k=0; k < elementos.length;k++){
@@ -164,7 +198,7 @@ public static void quickSort(String elementos[]){
                 resultado = resultado + elementos[k];
         }
         System.out.println(resultado);
-    
+        return resultado;
     }
     
     private static String[] MergeSortOrd(String [] elementos){
@@ -237,5 +271,8 @@ public static void quickSort(String elementos[]){
         return C;
     }
     
+    
+    //******************************************************************************************************************
+    //******************************************************************************************************************
 
 }

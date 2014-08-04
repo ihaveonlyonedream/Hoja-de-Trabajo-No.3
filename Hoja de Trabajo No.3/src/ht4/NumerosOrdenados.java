@@ -4,47 +4,46 @@
 //                          Dulce Chacon        13463
 //                          Nancy Giron         13467
 //                          Luis Gomez          13135
-// Clase donde se generan numeros aleatorios en un archivo. 
+// Clase donde se guardan los numeros aleatorios ya ordenados en un archivo. 
 // Referencia: http://eddytocodigo.com/2011/04/03/java-abre-y-sobreescribe-un-archivo-de-texto/
 //******************************************************************************************************************
 
+
 package ht4;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.Random;
 
 /**
  *
- * @author W
+ * @author Luis
  */
-public class RndNumeros {
+public class NumerosOrdenados {
     
-    /*------------------------------------------------------------
-     *constante para manejar la cantidad de numeros aleatorios generados.
-     *HACER PRUEBAS EN PROFILER CON VALORES DE 10, 100, 500, 1000, 1200, 1600, 1800, 2000*/
-    private final int tamanio = 10;
-    //------------------------------------------------------------
-    private  Random random = new Random();
+    
+    
+    
     
     File archivo; 
     
-    public RndNumeros()throws FileNotFoundException, IOException{
+    public NumerosOrdenados(String cadena)throws FileNotFoundException, IOException{
  
         //Se abre el archivo de texto donde se guardaran los numeros random generados.
-        archivo = new File("C:/numeros.txt"); 
-        String cadena="";
-        //los numeros aleatorios se generany se concatenan en una cadena separados por espacios
-        for (int i=0; i<tamanio; i++){
-        //generacion de numeros aleatorios desde cero hasta 3000. Se generaran entre hasta  2000 aleatorios. 
-            cadena+=random.nextInt(10)+",";//los numeros se separan con comas al guardarlos, para facilitar la separacion posterior
-        }
+        archivo = new File("C:/numerosOrdenados.txt"); 
+        
+        
         
         //se manejan todas las posibles excepciones posibles y se reescribe el archivo
         if (archivo == null) {
         throw new IllegalArgumentException("El archivo no debe ser nulo.");
         }
         if (!archivo.exists()) {
-        throw new FileNotFoundException ("el archivo para guardar los numeros aleatorios no existe: " + archivo);
+        throw new FileNotFoundException ("el archivo para guardar los numeros ordenados no existe: " + archivo);
         }
         if (!archivo.isFile()) {
         throw new IllegalArgumentException("no debe ser un directorio: " + archivo);
@@ -62,5 +61,5 @@ public class RndNumeros {
             output.close();
         }
     }
-}
     
+}
