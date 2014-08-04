@@ -18,19 +18,19 @@ public class RndNumeros {
      *HACER PRUEBAS EN PROFILER CON VALORES DE 10, 100, 500, 1000, 1200, 1600, 1800, 2000*/
     private final int tamanio = 10;
     //------------------------------------------------------------
+    private  Random random = new Random();
     
-    
-    private  Random rnd;
     File archivo; 
     
     public RndNumeros()throws FileNotFoundException, IOException{
-        rnd = new Random();
-        archivo = new File("C:/numeros.txt");
+ 
+        //Se abre el archivo de texto donde se guardaran los numeros random generados.
+        archivo = new File("C:/numeros.txt"); 
         String cadena="";
         //los numeros aleatorios se generany se concatenan en una cadena separados por espacios
         for (int i=0; i<tamanio; i++){
         //generacion de numeros aleatorios desde cero hasta 3000. Se generaran entre hasta  2000 aleatorios. 
-            cadena+=rnd.nextInt(3000)+",";//los numeros se separan con comas al guardarlos, para facilitar la separacion posterior
+            cadena+=random.nextInt(10)+",";//los numeros se separan con comas al guardarlos, para facilitar la separacion posterior
         }
         
         //se manejan todas las posibles excepciones posibles y se reescribe el archivo

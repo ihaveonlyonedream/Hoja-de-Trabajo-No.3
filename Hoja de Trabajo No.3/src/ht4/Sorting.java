@@ -11,78 +11,232 @@ package ht4;
 public class Sorting
 {
     
+    public static String resultado = "";
+    
+    
     /*BUBBLE SORT. William Orozco. 
      * Codigo tomado de: Java Structures/Data structures for the principled programmer   
      * Autor: Duanef Bailey*/
-   public static void bubbleSort (Comparable elementos, int i)
+       public static void bubbleSort (String[] elementos, int i)
    {
       /*Implementacion del algoritmo de ordenamiento bubble Sort*/
       int numSorted =0; //numero de valores en orden
-      int index; //contador general
-      int temp;
+      String temp;
       while (numSorted < i){
-          for (index =1; index < i-numSorted; index++){
-              if (elementos.compareTo(index-1,index)){
-                  temp=elementos.getValor(index-1);
-                  elementos.setValor(index-1, elementos.getValor(index));
-                  elementos.setValor(index, temp);//se hace el intercambio
+          
+          for (int index =1; index < i-numSorted; index++){
+              
+              if ((Integer.parseInt(elementos[index-1]))>(Integer.parseInt(elementos[index]))){
+                  
+                  temp = elementos[index-1];
+                  elementos[index-1] = elementos[index];
+                  elementos[index] = temp;//se hace el intercambio
               }
           }
           numSorted++;
       }
+      
+    for(int k=0; k < elementos.length;k++){
+            if(k!=0)
+            resultado = resultado + "," + elementos[k];
+            else
+                resultado = resultado + elementos[k];
+        }
+        System.out.println(resultado);
+    
    }
    
    
-   //AGREGAR ACA EL CODIGO DE LOS OTROS METODOS DE SORTING.
-   public static void insertionSort(int[] elementos, int index)
+        public static void insertionSort(String[] elementos, int n)
    {
-       if(index < elementos.length)
-       {
-           int j = index;
-	   int B = elementos[index];
-	   while ((j > 0) && (elementos[j-1] > B))
-           {
-               elementos[j] = elementos[j-1];
-	       j--;
+       int numerosOrdenados = 1;
+       int index;
+       
+       
+       while(numerosOrdenados < elementos.length){
+          
+           String temp = elementos[numerosOrdenados];
+           
+           for (index = numerosOrdenados; index > 0; index --){
+           
+               if (Integer.parseInt(temp)< Integer.parseInt(elementos[index-1])){
+               
+                   elementos[index] = elementos[index-1];
+                              
+               }else{
+                   
+                   break;
+               
+               
+               }
+           
+               
            }
-           elementos[j] = B;
-	   insertionSort(elementos, index + 1);
+	   
+           elementos[index] = temp;
+           numerosOrdenados++;
+           
        }
+       
+       for(int k=0; k < elementos.length;k++){
+            if(k!=0)
+            resultado = resultado + "," + elementos[k];
+            else
+                resultado = resultado + elementos[k];
+        }
+        System.out.println(resultado);
+    
    }
    
    /*QuickSort Nancy Girón 
     Codigo tomado de: Java Structures/Data structures for the principled programmer
-    * Autor: Duanef Bailey*/
-   public static void quicksort(int A[], int izq, int der)
-    {
+*/
 
-        int piv=A[izq]; //Tomamos el primer elemento de piv.
-        int i=izq; // i va a buscar de izq a der. 
-        int j=der; // j va a buscar de der a izq.
-        int aux;
+public static void quickSort(String elementos[]){
+    
+        elementos = quickSortOrd(elementos,0,elementos.length - 1);
+        for(int k=0; k < elementos.length;k++){
+            if(k!=0)
+            resultado = resultado + "," + elementos[k];
+            else
+                resultado = resultado + elementos[k];
+        }
+        System.out.println(resultado);
+  
+}
 
-        while(i<j)
-        {// Mientras no se cruce la busquda, esto se va a repetir. 
-           while(A[i]<=piv && i<j) i++; // Busca elementos mayores del piv. 
-                while(A[j]>piv) j--;         //Busca un elemento menor que el piv. 
-                     if (i<j) 
-                     {                                        
-                         aux= A[i];           // hacer intercambio.
-                         A[i]=A[j];
-                         A[j]=aux;
-                     }
-                  }
-        /*
-         * El piv sera colocado de manera que del lado izquierdo estaran los menores a el, y 
-         * del lado derecho se pocisionaran los mayores a el.
-        */
-         A[izq]=A[j];               
-         A[j]=piv;                     
-         if(izq<j-1)
-            quicksort(A,izq,j-1); // se ordena el subarray izquierdo
-         if(j+1 <der)
-            quicksort(A,j+1,der); // se ordena el subarray derecho
+
+    private static String[] quickSortOrd(String elementos [], int punteroIzquierdo, int punteroDerecho) {
+    
+             
+        int izq = punteroIzquierdo;
+        int der = punteroDerecho;
+        
+        if (punteroIzquierdo != punteroDerecho){
+        
+            int pivote = punteroIzquierdo;
+            String temp;
+            
+            while(punteroIzquierdo != punteroDerecho){
+            
+                while ((Integer.parseInt(elementos[punteroDerecho]) >= Integer.parseInt(elementos[pivote]))&& (punteroIzquierdo < punteroDerecho)){
+                    punteroDerecho--;
+                }            
+                
+                while ((Integer.parseInt(elementos[punteroIzquierdo]) < Integer.parseInt(elementos[pivote]))&&(punteroIzquierdo < punteroDerecho)){
+                
+                    punteroIzquierdo++;
+                
+                }
+                
+                if (punteroDerecho != punteroIzquierdo){
+                
+                    temp = elementos[punteroDerecho];
+                    elementos[punteroDerecho] = elementos[punteroIzquierdo];
+                    elementos[punteroIzquierdo] = temp;
+                    
+                    
+                
+                }
+            }
+        
+            if(punteroIzquierdo == punteroDerecho){
+            
+                quickSortOrd(elementos,izq,punteroIzquierdo );
+                quickSortOrd(elementos,punteroIzquierdo +1,der);
+                
+            }
+            
+        }
+        
+        return elementos;
     }
+    
+    
+       
+    public static void mergeSort(String [] elementos){
+    
+        elementos = MergeSortOrd(elementos);
+        for(int k=0; k < elementos.length;k++){
+            if(k!=0)
+            resultado = resultado + "," + elementos[k];
+            else
+                resultado = resultado + elementos[k];
+        }
+        System.out.println(resultado);
+    
+    }
+    
+    private static String[] MergeSortOrd(String [] elementos){
+    
+        if(elementos.length==1){
+            return elementos;
+        
+        }else{
+            
+            int n = (int) Math.floor(elementos.length/2);
+            String B[]= new String [n];
+            String C[]= new String [elementos.length-n];
+            
+            
+            for (int i = 0; i < elementos.length; i++){
+               
+                if(i<n)
+                    B[i]=elementos[i];
+                else
+                    C[i-n]=elementos[i];
+                
+            }
+            
+            B=MergeSortOrd(B);
+            C=MergeSortOrd(C);
+            elementos=Merge(B,C);
+            return elementos;
+
+        }
+        
+    }
+
+    private static String[] Merge(String[] A, String[] B) {
+        
+        String C[] = new String[(A.length) + (B.length)];
+        int a=0,b=0;
+        
+        for (int i=0; i < (A.length) + (B.length);i++){
+        
+            if(a==A.length){
+            
+                C[i]=B[b];
+                b++;
+                 
+            }
+            else
+            if(b==B.length){
+            
+                C[i]=A[a];
+                a++;
+       
+            }
+            else
+            if(Integer.parseInt(A[a]) > Integer.parseInt(B[b])){
+            
+            
+                C[i]=B[b];
+                b++;
+                  
+            }
+            else{
+            
+                C[i]=A[a];
+                a++;
+            
+            }
+            
+        }
+
+        return C;
+    }
+    
 
 }
 
